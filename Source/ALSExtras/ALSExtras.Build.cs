@@ -2,20 +2,22 @@ using UnrealBuildTool;
 
 public class ALSExtras : ModuleRules
 {
-	public ALSExtras(ReadOnlyTargetRules target) : base(target)
+	public ALSExtras(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
-		IncludeOrderVersion = EngineIncludeOrderVersion.Unreal5_6;
+		IncludeOrderVersion = EngineIncludeOrderVersion.Unreal5_4;
 
-		// CppCompileWarningSettings.UnsafeTypeCastWarningLevel = WarningLevel.Warning;
-		CppCompileWarningSettings.NonInlinedGenCppWarningLevel = WarningLevel.Warning;
+		bEnableNonInlinedGenCppWarnings = true;
+		// UnsafeTypeCastWarningLevel = WarningLevel.Warning;
 
-		PublicDependencyModuleNames.AddRange([
-			"Core", "CoreUObject", "Engine", "AIModule", "ALS"
-		]);
+		PublicDependencyModuleNames.AddRange(new[]
+		{
+			"Core", "CoreUObject", "Engine", "AIModule", "ALS", "LyraGame", "AIModule", "GameplayAbilities", "ModularGameplay", "ModularGameplayActors"
+		});
 
-		PrivateDependencyModuleNames.AddRange([
+		PrivateDependencyModuleNames.AddRange(new[]
+		{
 			"EnhancedInput", "ALSCamera"
-		]);
+		});
 	}
 }

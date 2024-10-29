@@ -2,29 +2,32 @@ using UnrealBuildTool;
 
 public class ALS : ModuleRules
 {
-	public ALS(ReadOnlyTargetRules target) : base(target)
+	public ALS(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
-		IncludeOrderVersion = EngineIncludeOrderVersion.Unreal5_6;
+		IncludeOrderVersion = EngineIncludeOrderVersion.Unreal5_4;
 
-		// CppCompileWarningSettings.UnsafeTypeCastWarningLevel = WarningLevel.Warning;
-		CppCompileWarningSettings.NonInlinedGenCppWarningLevel = WarningLevel.Warning;
+		bEnableNonInlinedGenCppWarnings = true;
+		// UnsafeTypeCastWarningLevel = WarningLevel.Warning;
 
-		PublicDependencyModuleNames.AddRange([
-			"Core", "CoreUObject", "Engine", "GameplayTags", "AnimGraphRuntime", "RigVM", "ControlRig"
-		]);
-
-		PrivateDependencyModuleNames.AddRange([
-			"EngineSettings", "NetCore", "PhysicsCore", "Niagara"
-		]);
-
-		if (target.Type == TargetRules.TargetType.Editor)
+		PublicDependencyModuleNames.AddRange(new[]
 		{
-			PrivateDependencyModuleNames.AddRange([
+			"Core", "CoreUObject", "Engine", "GameplayTags", "AnimGraphRuntime", "RigVM", "ControlRig", "LyraGame", "AIModule", "GameplayAbilities", "ModularGameplay", "ModularGameplayActors"
+		});
+
+		PrivateDependencyModuleNames.AddRange(new[]
+		{
+			"EngineSettings", "NetCore", "PhysicsCore", "Niagara"
+		});
+
+		if (Target.Type == TargetRules.TargetType.Editor)
+		{
+			PrivateDependencyModuleNames.AddRange(new[]
+			{
 				"MessageLog"
-			]);
+			});
 		}
 
-		SetupIrisSupport(target);
+		SetupIrisSupport(Target);
 	}
 }
