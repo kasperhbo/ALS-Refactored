@@ -5,10 +5,9 @@ public class ALSLyra : ModuleRules
 	public ALSLyra(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
-		IncludeOrderVersion = EngineIncludeOrderVersion.Unreal5_4;
+		IncludeOrderVersion = EngineIncludeOrderVersion.Latest;
 		
-		bEnableNonInlinedGenCppWarnings = true;
-		// UnsafeTypeCastWarningLevel = WarningLevel.Warning;
+			// UnsafeTypeCastWarningLevel = WarningLevel.Warning;
 		
 		PublicDependencyModuleNames.AddRange(new[]
 		{
